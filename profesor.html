@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnHack - Herramientas para el Profesor</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Esta función simula la obtención de necesidades de los estudiantes
+        function mostrarNecesidades() {
+            // Simulamos las necesidades seleccionadas por los estudiantes
+            const necesidades = [
+                'Traducir la explicación a lenguaje de señas',
+                'Subtítulos y transcripciones'
+            ];
+            const listaNecesidades = necesidades.map(necesidad => `<li>${necesidad}</li>`).join('');
+            document.getElementById('necesidades').innerHTML = listaNecesidades;
+            document.getElementById('necesidades').style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Herramientas para el Profesor</h1>
+    </header>
+
+    <main>
+        <h2>Bienvenido, Profesor</h2>
+        <p>Antes de comenzar la clase, aquí están las necesidades solicitadas por los estudiantes:</p>
+        
+        <div id="necesidades" style="display: none;">
+            <h3>Necesidades de los Estudiantes:</h3>
+            <ul></ul>
+        </div>
+
+        <button onclick="mostrarNecesidades()">Ver Necesidades de los Estudiantes</button>
+        <button onclick="alert('Clase comenzada...')">Comenzar la Clase</button>
+        <button onclick="window.location.href='index.html'">Volver</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 LearnHack. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
+

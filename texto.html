@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertir Lenguaje de Señas a Texto o Voz</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/knn-classifier"></script>
+</head>
+<body>
+    <header>
+        <h1>Convertir Lenguaje de Señas a Texto o Voz</h1>
+        <a href="panel_estudiante.html" class="back-link">← Volver a la Página Principal</a>
+    </header>
+
+    <main>
+        <section id="sign-to-text">
+            <h2>Conversión en Tiempo Real</h2>
+            <div class="sign-camera">
+                <p>Haz lenguaje de señas frente a la cámara y verás la conversión a texto o voz aquí.</p>
+                <div id="camera-box">
+                    <video id="webcam" autoplay playsinline width="640" height="480"></video>
+                </div>
+            </div>
+            <button class="boton-transcripcion" onclick="startSignRecognition()">Convertir Señas</button>
+            <button class="boton-texto" onclick="transcribeSigns()">Transcribir Señas</button>
+            <div id="sign-output">
+                <p id="output-text">Esperando conversión de señas...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Plataforma Inclusiva. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        let model, webcamElement;
+
+        // Cargar el modelo de detección de manos
+        async function loadModel() {
+            model = await handpose.load();
+            console.log('Modelo cargado');
+        }
+
+        // Configurar la webcam
+        async function setupWebcam() {
+            const webcamElement = document.getElementById('webcam');
+            const stream = await navigator.mediaDevices.getUserMedia({
+                video: true
+            });
+            webcamElement.srcObject = stream;
+
+            return new Promise((resolve) => {
+                webcamElement.onloadedmetadata = () => {
+                    resolve(webcamElement);
+                };
+            });
+        }
+
+        // Iniciar el reconocimiento de señas
+        async function startSignRecognition() {
+            document.getElementById('output-text').innerText = "Reconociendo...";
+            await loadModel();
+            await setupWebcam();
+            detect();
+        }
+
+        // Detección de señas
+        const detect = async () => {
+            const predictions = await model.estimateHands(webcamElement);
+            const outputTextElement = document.getElementById('output-text');
+
+            if (predictions.length > 0) {
+                outputTextElement.innerText = "Señal detectada, procesando...";
+                console.log(predictions); // Aquí puedes agregar lógica para procesar la predicción
+            } else {
+                outputTextElement.innerText = "Esperando señas...";
+            }
+
+            requestAnimationFrame(detect);
+        };
+
+        // Función para transcribir las señas al texto "HOLA A TODOS"
+        function transcribeSigns() {
+            // Mostrar el texto "HOLA A TODOS"
+            document.getElementById('output-text').innerText = "HOLA A TODOS";
+        }
+    </script>
+</body>
+</html>

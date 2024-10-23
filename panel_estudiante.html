@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnHack - Panel del Estudiante</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Simulamos la obtención de datos del estudiante
+        const estudiante = {
+            nombre: "Juan",
+            apellidos: "Pérez",
+            email: "juan.perez@example.com",
+        };
+
+        function mostrarDatosEstudiante() {
+            document.getElementById('nombre').textContent = `${estudiante.nombre} ${estudiante.apellidos}`;
+            document.getElementById('email').textContent = estudiante.email;
+
+            // Aquí puedes agregar las clases si es necesario
+        }
+
+        window.onload = mostrarDatosEstudiante; // Muestra los datos del estudiante al cargar
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Panel del Estudiante</h1>
+    </header>
+
+    <main>
+        <!-- Datos del estudiante -->
+        <h2 id="nombre"></h2>
+        <p id="email"></p>
+
+        <!-- Características Interactivas -->
+        <section class="content-section">
+            <h2>Características Interactivas</h2>
+            <ul class="button-container">
+                <li><a href="transcripcion.html" class="elegant-button">Transcripción en tiempo real</a></li>
+                <li><a href="texto.html" class="elegant-button">Lenguaje de señas a texto/voz</a></li>
+                <li><a href="video.html" class="elegant-button">Subir video de lenguaje de señas</a></li>
+                <li><a href="lecturaDeTexto.html" class="elegant-button">Lectura de texto</a></li>
+            </ul>
+        </section>
+
+        <!-- Botón para levantar la mano -->
+        <button class="btn-levantar-mano">✋ Levantar la Mano</button>
+
+        <!-- Chat interactivo -->
+        <section class="chat-box">
+            <h2>Chat Interactivo para la Clase</h2>
+            <div id="chat-messages">
+                <p><strong>Profesor:</strong> ¡Bienvenidos a la clase de hoy!</p>
+            </div>
+            <input type="text" id="chat-input" placeholder="Escribe tu mensaje aquí...">
+            <button id="send-btn">Enviar</button>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 LearnHack. Todos los derechos reservados.</p>
+    </footer>
+    <script src="JavaScript.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnHack - Inicio</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <script>
+        // Variable global para almacenar el usuario registrado
+        let usuarioRegistrado = null;
+
+        function verificarInicioSesion() {
+            const email = document.getElementById('email-sesion').value;
+            const contrasena = document.getElementById('contrasena-sesion').value;
+
+            // Verificar credenciales
+            if (usuarioRegistrado && email === usuarioRegistrado.email && contrasena === usuarioRegistrado.contrasena) {
+                // Redirigir al panel del estudiante
+                alert(`Bienvenido ${usuarioRegistrado.nombre} ${usuarioRegistrado.apellidos}`); // Mensaje de bienvenida
+                window.location.href = 'panel_estudiante.html'; // Aquí debes tener un archivo para el panel
+            } else {
+                alert('Credenciales incorrectas. Por favor, inténtalo de nuevo.');
+            }
+        }
+
+        function registrarEstudiante(event) {
+            event.preventDefault(); // Prevenir el envío del formulario
+            const nombre = document.getElementById('nombre').value;
+            const apellidos = document.getElementById('apellidos').value;
+            const email = document.getElementById('email').value;
+            const contrasena = document.getElementById('contrasena').value;
+            const confirmarContrasena = document.getElementById('confirmar-contrasena').value;
+
+            // Validar que las contraseñas coincidan
+            if (contrasena !== confirmarContrasena) {
+                alert('Las contraseñas no coinciden. Por favor, inténtalo de nuevo.');
+                return;
+            }
+
+            // Almacenar los datos del estudiante
+            usuarioRegistrado = {
+                nombre: nombre,
+                apellidos: apellidos,
+                email: email,
+                contrasena: contrasena
+            };
+
+            alert('Registro exitoso. Ahora puedes iniciar sesión.');
+            document.getElementById('registro').style.display = 'none'; // Cerrar el formulario de registro
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a LearnHack</h1>
+    </header>
+
+    <main>
+        <div class="opciones">
+            <div class="opcion">
+                <h2>Profesor</h2>
+                <h3>Iniciar sesión para acceder a las herramientas de enseñanza.</h3>
+                <button onclick="window.location.href='profesor.html'">Entrar</button>
+            </div>
+            <div class="opcion">
+                <h2>Registro de Estudiante</h2>
+                <h3>Regístrate para acceder a las opciones de aprendizaje.</h3>
+                <button onclick="document.getElementById('registro').style.display='block'">Registrarse</button>
+                <button onclick="document.getElementById('inicio-sesion').style.display='block'">Iniciar sesión</button>
+            </div>
+        </div>
+        <img src="Logotipo-removebg-preview.PNG" alt="Logo" class="main-image">
+
+        <!-- Formulario de Registro -->
+        <div id="registro" class="registro" style="display: none;">
+            <h2>Registro de Estudiante</h2>
+            <form onsubmit="registrarEstudiante(event)">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" id="apellidos" name="apellidos" required>
+
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="contrasena">Contraseña:</label>
+                <input type="password" id="contrasena" name="contrasena" required>
+
+                <label for="confirmar-contrasena">Confirmar Contraseña:</label>
+                <input type="password" id="confirmar-contrasena" name="confirmar-contrasena" required>
+
+                <button type="submit">Registrarse</button>
+                <button type="button" onclick="document.getElementById('registro').style.display='none'">Cancelar</button>
+            </form>
+        </div>
+
+        <!-- Formulario de Inicio de Sesión -->
+        <div id="inicio-sesion" class="registro" style="display: none;">
+            <h2>Iniciar Sesión</h2>
+            <form onsubmit="event.preventDefault(); verificarInicioSesion();">
+                <label for="email-sesion">Correo Electrónico:</label>
+                <input type="email" id="email-sesion" name="email" required>
+
+                <label for="contrasena-sesion">Contraseña:</label>
+                <input type="password" id="contrasena-sesion" name="contrasena" required>
+
+                <button type="submit">Iniciar Sesión</button>
+                <button type="button" onclick="document.getElementById('inicio-sesion').style.display='none'">Cancelar</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 LearnHack. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcripción en Tiempo Real</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Transcripción en Tiempo Real de Lengua de Señas</h1>
+        <a href="panel_estudiante.html" class="back-link">← Volver a la Página Principal</a>
+    </header>
+
+    <main>
+        <!-- Sección de transcripción automática y video -->
+        <section id="sign-transcription">
+            <h2>Transcripción Automática</h2>
+            <div class="transcription-box">
+                <p id="transcription-text">Esperando transcripción de lengua de señas...</p>
+            </div>
+            
+            <button class="boton-transcripcion" onclick="startTranscription()">Iniciar Transcripción</button>
+
+            <!-- Contenedor para el video -->
+            <div id="video-container" style="display: none; margin-top: 20px;">
+                <h3>Video de Lengua de Señas</h3>
+                <video id="sign-language-video" width="800" height="450" controls muted>
+                    <source src="NUEVO.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+            </div>
+        </section>
+
+        <!-- Nuevo apartado para la transcripción escrita -->
+        <section id="written-transcription">
+            <h2>Transcripción Escrita</h2>
+            <div class="document-style">
+                <textarea id="texto" rows="10" cols="80" placeholder="El texto se mostrará aquí..." readonly></textarea>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Plataforma Inclusiva. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="implementacion.js"></script> <!-- Cambiado a implementacion.js -->
+</body>
+</html>

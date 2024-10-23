@@ -1,0 +1,236 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Asegura que el html y body ocupen toda la ventana */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom right, #f0f2f5, #e0e7ff);
+    color: #333;
+    line-height: 1.8;
+}
+
+/* Estilo del header */
+header {
+    background: linear-gradient(to right, #007bff, #0056b3);
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+/* Estilos para el main */
+main {
+    margin: 40px auto;
+    padding: 40px;
+    max-width: 1100px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #007bff;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 50px;
+    height: 4px;
+    background: #007bff;
+    border-radius: 2px;
+}
+
+/* Estilo para los botones elegantes */
+.button-container {
+    display: flex;
+    flex-direction: column; /* Cambiar a columna */
+    align-items: center; /* Centrar los botones horizontalmente */
+    gap: 20px; /* Espacio entre los botones */
+    margin-top: 20px; /* Espacio arriba de los botones */
+    list-style-type: none; /* Quitar las viñetas de la lista */
+    padding: 0; /* Quitar el padding por defecto de la lista */
+}
+
+.button-container li {
+    width: 100%; /* Asegura que los enlaces ocupen todo el ancho del contenedor */
+    display: flex;
+    justify-content: center; /* Centra el contenido del li */
+}
+
+.elegant-button {
+    padding: 15px 30px; /* Ajuste de padding */
+    font-size: 1.6rem;
+    background: #007bff; /* Color gris oscuro */
+    color: white;
+    text-decoration: none; /* Quitar el subrayado del enlace */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 900px; /* Ancho fijo para simetría */
+    text-align: center; /* Centrar texto */
+}
+
+.elegant-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    background: #007bff; /* Color más oscuro al pasar el ratón */
+}
+
+/* Estilo para los botones de acción */
+button {
+    padding: 15px 40px;
+    font-size: 1.8rem;
+    background: linear-gradient(to right, #007bff, #0056b3);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to right, #0056b3, #003f7f);
+}
+
+button.btn-levantar-mano {
+    padding: 15px 40px;
+    font-size: 1.8rem;
+    background: linear-gradient(to right, #ffcc00, #ff9900);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 100;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button.btn-levantar-mano:hover {
+    background: linear-gradient(to right, #ff9900, #ff6600);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+button.btn-levantar-mano:before {
+    content: "✋";
+    font-size: 2rem;
+    margin-right: 10px;
+    transition: transform 0.2s ease;
+}
+
+button.btn-levantar-mano:hover:before {
+    transform: scale(1.10);
+}
+
+/* Estilos para formularios */
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* Estilo para cajas de contenido */
+.transcription-box, .sign-camera, #sign-output, #video-transcription {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.transcription-box:hover, .sign-camera:hover, #sign-output:hover, #video-transcription:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: scale(1.02);
+}
+
+/* Estilo del footer */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 1.4rem;
+    background: #007bff;
+    color: white;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .opciones {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .registro, .inicio-sesion {
+        width: 90%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.back-link {
+    color: white; /* Texto en blanco */
+    text-decoration: none; /* Sin subrayado por defecto */
+    padding: 10px 20px; /* Espaciado interno */
+
+    font-size: 1rem; /* Tamaño de fuente aumentado */
+    transition: text-decoration 0.3s ease; /* Transición suave */
+    display: inline-block; /* Para permitir padding y margin */
+    margin-top: 20px; /* Espacio superior */
+}
+
+.back-link:hover {
+    text-decoration: underline; /* Subrayar al pasar el cursor */
+    background-color: #0056b3; /* Color de fondo más oscuro al pasar el cursor */
+}
+.main-image {
+    position: absolute; /* Para posicionamiento relativo al contenedor */
+    right: 200px; /* Ajusta según sea necesario */
+    top: 60%; /* Centra verticalmente en el contenedor */
+    transform: translateY(-50%); /* Compensa la altura de la imagen para centrarla */
+    height: 250px; /* Ajusta la altura según sea */
+    width: auto; /* Mantiene la proporción de la imagen */
+}
